@@ -1,0 +1,57 @@
+ADD
+    pwd >> cd >> git init >> git add . >> git status >> git commit -m 'commit message'
+ 
+PUSH
+    *if remote history != local; PULL it then PUSH*
+
+    [publish changes to central repo's main branch]
+        git push origin main  
+
+    (this needs branch name?) 
+        git push <remote> --all [push all local branches to specified remote branch]
+
+    no upstream branch: pushing to new branch doesnt work
+        git push -u origin --all
+
+PULL
+
+    git pull <remote http> 
+
+DELETE
+
+    [local]    git branch -d <branchName>
+
+    [remote]    git push origin --delete <branchName>
+
+
+**Changes added to new branch & merged with master: 
+
+    [create branch & add new-feature]
+        git branch new-feature
+        git checkout new-feature
+        (<((OR))>) git checkout -b feature_x [creates new branch & switches to it]        
+        git add new-file.fileType
+        ~ git status
+        git commit
+
+    [set new-feature upstream]
+        git push -u origin --all
+
+    [merge new-feature to master]
+        git checkout master
+        git merge new-feature
+
+    [delete new-branch (local & remote)]
+        git branch -d new-feature   --> local
+        git push origin --delete new-feature
+
+
+    [another way to send changes upstream to main branch]
+
+    git checkout -b newStuff
+    **change file**
+    git add file-changed.fileType
+    git commit
+    git push -u origin main
+
+
